@@ -13,3 +13,11 @@ sources:
             tests:
             - unique
             - not_null
+      - name: person
+        description: the raw persons data.
+        columns:
+          - name: businessentityid
+            description: the primary key for the raw persons data.
+            tests:
+            - unique
+            - not_null
