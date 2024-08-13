@@ -21,3 +21,15 @@ sources:
             tests:
             - unique
             - not_null
+      - name: productsubcategory
+        description: the raw products subcategory data.
+        columns:
+          - name: productsubcategoryid
+            description: the primary key for the raw products subcategory data.
+            tests:
+            - unique
+            - not_null
+          - name: productcategoryid
+            description: the foreign key for the raw products category data.
+            tests: 
+            - not_null
