@@ -13,7 +13,7 @@ source as (
         cast(productid as string) as product_id
 
         /* foreign key */
-        , cast(productsubcategoryid as string) as product_subcategory_id
+        , cast(productsubcategoryid as string) as product_sub_category_id
 
         , name as product_name
         , finishedgoodsflag as finished_goods_flag
