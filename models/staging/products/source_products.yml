@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: adventure_works_source
+    description: a clone of Adventure Works database.
+    database: quixotic-card-431711-p4 
+    tables:
+      - name: product
+        description: the raw products data.
+        columns:
+          - name: productid
+            description: the primary key for the raw products data.
+            tests:
+            - unique
+            - not_null
