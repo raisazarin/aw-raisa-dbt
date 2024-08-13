@@ -13,3 +13,11 @@ sources:
             tests:
             - unique
             - not_null
+      - name: productcategory
+        description: the raw products category data.
+        columns:
+          - name: productcategoryid
+            description: the primary key for the raw products category data.
+            tests:
+            - unique
+            - not_null
