@@ -6,7 +6,7 @@ sources:
     database: quixotic-card-431711-p4 
     tables:
       - name: salesorderdetail
-        description: the raw salesorderdetail data.
+        description: the raw sales order detail data.
         columns:
           - name: salesorderdetailid
             description: the primary key for the raw sales order detail data.
@@ -21,3 +21,16 @@ sources:
             description: the foreign key for the raw products data.
             tests:
             - not_null
+      - name: salesorderheader
+        description: the raw sales order header data.
+        columns:
+          - name: salesorderid
+            description: the primary key for the raw sales order header data.
+            tests:
+            - unique
+            - not_null
+          - name: customerid
+            description: the foreign key for the raw customer data.
+            tests:
+            - not_null
+          
