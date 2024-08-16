@@ -52,5 +52,13 @@ sources:
             tests:
             - unique
             - not_null
+      - name: salesterritory
+        description: the raw sales territory data.
+        columns:
+          - name: territoryid
+            description: the primary key for the raw sales territory data.
+            tests:
+            - unique
+            - not_null
           
           
