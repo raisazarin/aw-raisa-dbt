@@ -34,7 +34,7 @@ sources:
             tests:
             - not_null
       - name: salesorderheadersalesreason
-        description: the raw sales reason id data.
+        description: the raw sales reason versus sales order relation data.
         columns:
           - name: salesreasonid
             description: the foreign key for the raw sales reason data.
@@ -44,4 +44,13 @@ sources:
             description: the foreign key for the raw sales order header data.
             tests:
             - not_null
+      - name: salesreason
+        description: the raw sales reason data.
+        columns:
+          - name: salesreasonid
+            description: the primary key for the raw sales reason data.
+            tests:
+            - unique
+            - not_null
+          
           
