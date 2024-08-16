@@ -60,5 +60,14 @@ sources:
             tests:
             - unique
             - not_null
+      - name: salesperson
+        description: the raw salesperson code data.
+        columns:
+          - name: businessentityid
+            description: the primary key for the raw salesperson data.
+            tests:
+            - unique
+            - not_null
+          
           
           
