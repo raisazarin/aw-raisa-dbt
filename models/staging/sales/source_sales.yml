@@ -68,6 +68,14 @@ sources:
             tests:
             - unique
             - not_null
+      - name: specialoffer
+        description: the raw dimension discounts data.
+        columns:
+          - name: specialofferid
+            description: the primary key for the raw discounts data.
+            tests:
+            - unique
+            - not_null
           
           
           
