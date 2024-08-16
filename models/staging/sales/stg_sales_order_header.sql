@@ -17,6 +17,7 @@ source as (
         , cast(salespersonid as string) as salesperson_id
         , cast(territoryid as string) as territory_id
         , cast(creditcardid as string) as creditcard_id
+        , cast(shiptoaddressid as string) as address_id
 
         , orderdate as order_date
         , duedate as due_date
