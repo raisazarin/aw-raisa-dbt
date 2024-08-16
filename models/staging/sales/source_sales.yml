@@ -33,4 +33,15 @@ sources:
             description: the foreign key for the raw customer data.
             tests:
             - not_null
+      - name: salesorderheadersalesreason
+        description: the raw sales reason id data.
+        columns:
+          - name: salesreasonid
+            description: the foreign key for the raw sales reason data.
+            tests:
+            - not_null
+          - name: salesorderid
+            description: the foreign key for the raw sales order header data.
+            tests:
+            - not_null
           
