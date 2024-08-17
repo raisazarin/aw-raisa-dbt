@@ -39,6 +39,11 @@ with product as (
                 then 'Standard'
             else 'not defined'
         end as product_line_name
+        , case 
+            when sell_end_date is null
+                then 'active'
+            else 'disabled'
+            end as is_active
     from first_join as f
     left join category as c
     on f.product_category_id = c.product_category_id
