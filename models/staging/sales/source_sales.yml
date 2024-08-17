@@ -69,12 +69,24 @@ sources:
             - unique
             - not_null
       - name: specialoffer
-        description: the raw dimension discounts data.
+        description: the raw dimension for discounts data.
         columns:
           - name: specialofferid
             description: the primary key for the raw discounts data.
             tests:
             - unique
+            - not_null
+      - name: address
+        description: the raw dimension for addresses data.
+        columns:
+          - name: addressid
+            description: the primary key for addresses raw data.
+            tests:
+            - unique
+            - not_null
+          - name: stateprovinceid
+            description: the foreign key for state province raw data.
+            tests:
             - not_null
           
           
