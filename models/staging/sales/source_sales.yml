@@ -88,6 +88,21 @@ sources:
             description: the foreign key for state province raw data.
             tests:
             - not_null
-          
+      - name: stateprovince
+        description: the raw dimension for state province data.
+        columns:
+          - name: stateprovinceid
+            description: the primary key for state province raw data.
+            tests:
+            - unique
+            - not_null
+          - name: countryregioncode
+            description: the foreign key for country region raw data.
+            tests:
+            - not_null
+          - name: territoryid
+            description: the foreign key for territory raw data.
+            tests:
+            - not_null
           
           
