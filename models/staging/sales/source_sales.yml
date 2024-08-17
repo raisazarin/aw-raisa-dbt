@@ -104,5 +104,13 @@ sources:
             description: the foreign key for territory raw data.
             tests:
             - not_null
+      - name: countryregion
+        description: the raw dimension for country region raw data.
+        columns:
+          - name: countryregioncode
+            description: the primary key for country region raw data.
+            tests:
+            - unique
+            - not_null
           
           
