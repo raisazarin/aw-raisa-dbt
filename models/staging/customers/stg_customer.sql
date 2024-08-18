@@ -13,7 +13,7 @@ source as (
         customerid as customer_id
 
         /* foreign key */
-        , personid as perosn_id
+        , personid as person_id
         , storeid as store_id
         , territoryid as territory_id
 
