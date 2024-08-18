@@ -13,7 +13,7 @@ source as (
         cast(territoryid as string) as territory_id
         
         , name as territory_name
-        , countryregioncode as country_region_code
+        , countryregioncode as country_region_id
         , `group` as group_region
 
         /* system column */
