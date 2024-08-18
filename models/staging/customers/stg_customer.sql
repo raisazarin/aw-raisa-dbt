@@ -10,15 +10,15 @@ source as (
 
     select
         /* primary key */ 
-        customerid as customer_id
+        cast(customerid as string) as customer_id
 
         /* foreign key */
-        , personid as person_id
-        , storeid as store_id
-        , territoryid as territory_id
+        , cast(personid as string) as person_id
+        , cast(storeid as string) as store_id
+        , cast(territoryid as string) as territory_id
 
         /* system column */
-        , modifieddate  as updated_at
+        , modifieddate as updated_at
     from source
 
 )
