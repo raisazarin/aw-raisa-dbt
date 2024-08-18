@@ -10,7 +10,7 @@ source as (
 
     select
         /* primary key */ 
-        businessentityid as person_id
+        cast(businessentityid as string) as person_id
 
         , persontype as person_type
         , namestyle as name_style
