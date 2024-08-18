@@ -13,10 +13,10 @@ source as (
         cast(salesreasonid as string) as sales_reason_id
         
         , name as sales_reason_name
-        , reasontype sales_reason_type
+        , reasontype as sales_reason_type
 
         /* system column */
-        , modifieddate  as updated_at
+        , modifieddate as updated_at
     from source
 
 )
