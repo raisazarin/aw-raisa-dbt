@@ -10,10 +10,10 @@ source as (
 
     select
         /* primary key */ 
-        businessentityid as store_id
+        cast(businessentityid as string) as store_id
 
         /* foreign key */
-        , salespersonid as salesperson_id
+        , cast(salespersonid as string) as salesperson_id
 
         , name as store_name
 
