@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_sales_hierarchy
+    description: "This model creates a dimension table for sales hierarchy information, including surrogate keys and additional columns."
+    columns:
+      - name: sales_hierarchy_sk
+        description: "Surrogate key for the sales hierarchy dimension, generated from 'salesperson_id'."
+        tests:
+          - not_null
+          - unique
+
+      - name: salesperson_id
+        description: "Primary key for the salesperson."
+        tests:
+          - not_null
+          - unique
+
+      - name: territory_id
+        description: "Identifier for the territory."
+
+      - name: territory_name
+        description: "Name of the territory."
+        tests:
+          - not_null
+          - dbt_utils.not_empty_string
+
+      - name: country_region_id
+        description: "Identifier for the country or region."
+
+      - name: group_region
+        description: "Group or region grouping information."
+        tests:
+          - not_null
+          - dbt_utils.not_empty_string
+
+      - name: source_updated_at
+        description: "Timestamp when the source record was last updated."
+
+      - name: updated_at
+        description: "Timestamp when the record was last updated in this model."
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - salesperson_id
+            - sales_hierarchy_sk
