@@ -25,9 +25,13 @@ order_header as (
         , h.customer_id
         , h.salesperson_id
         , h.territory_id
-        , h.creditcard_id
         , h.address_id
 
+        , case
+            when h.creditcard_id is null
+                then 'other payment method'
+            else 'credit card'
+        end as payment_method
         , d.order_quantity
         , d.unit_price
         , case
