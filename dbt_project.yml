@@ -48,3 +48,7 @@ models:
     marts:
       +materialized: table
       +schema: marts
+
+    aggregate:
+      +materialized: table
+      +schema: marts
