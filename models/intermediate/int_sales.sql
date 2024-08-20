@@ -1,83 +1,70 @@
 with 
-
-order_header as (
-
-    select * from {{ ref('stg_sales_order_header') }}
-
+    header as (
+        select * 
+        from {{ ref('stg_sales_order_header') }}
 )
 
-, order_detail as (
-
-    select * from {{ ref('stg_sales_order_detail') }}
-
+, detail as (
+    select * 
+    from {{ ref('stg_sales_order_detail') }}
 )
 
 /* to define if order_date is the date of the first order of that customer */
 , first_order as (
-
     select 
         customer_id
         , cast(min(order_date) as timestamp) as first_order
-    from order_header
+    from header
     group by customer_id
-
 )
 
 , join_sales as (
-
     select
-        /* primary key */ 
-        d.sales_order_detail_id
-
-        /* foreign key */
-        , d.sales_order_id
-        , d.product_id
-        , d.special_offer_id
-        , h.customer_id
-        , h.salesperson_id
-        , h.territory_id
-        , h.address_id
-
+        detail.sales_order_detail_id
+        , detail.sales_order_id
+        , detail.product_id
+        , detail.special_offer_id
+        , header.customer_id
+        , header.salesperson_id
+        , header.territory_id
+        , header.shipment_address_id
         , case
-            when h.creditcard_id is null
+            when header.creditcard_id is null
                 then 'other payment method'
             else 'credit card'
         end as payment_method
-        , d.order_quantity
-        , d.unit_price
+        , detail.order_quantity
+        , detail.unit_price
         , case
-            when d.unit_price_discount != 0
-                then d.unit_price_discount
+            when detail.unit_price_discount != 0
+                then detail.unit_price_discount
             else null
         end as unit_price_discount_percentage
-        , round(d.unit_price_discount * d.unit_price * d.order_quantity, 3) as unit_price_discount_value 
-        , cast(h.order_date as timestamp) as order_date
-        , cast(h.due_date as timestamp) as due_date
-        , cast(h.ship_date as timestamp) as ship_date
-        , h.order_status
-
-        /* system column */
-        , d.updated_at as source_updated_at
-
-    from order_detail as d
-    left join order_header as h
-    on d.sales_order_id = h.sales_order_id
+        , round(detail.unit_price_discount * detail.unit_price * detail.order_quantity, 3) as unit_price_discount_value 
+        , cast(header.order_date as timestamp) as order_date
+        , cast(header.due_date as timestamp) as due_date
+        , cast(header.ship_date as timestamp) as ship_date
+        , header.order_status
+        , detail.updated_at as source_updated_at
+    from detail
+    left join header
+    on detail.sales_order_id = header.sales_order_id
     /* 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled */
-    where h.order_status = 5
-
+    where header.order_status = 5
 )
 
 , final as (
     select
-        j.*
+        join_sales.*
         , case
-            when f.first_order = j.order_date
+            when first_order.first_order = join_sales.order_date
                 then 'true'
             else 'false'
         end as is_first_order
-    from join_sales as j
-    left join first_order as f
-    on j.customer_id = f.customer_id
+    from join_sales
+    left join first_order
+    on join_sales.customer_id = first_order.customer_id
 )
 
-select * from final
+select * 
+from final
