@@ -21,6 +21,7 @@ sources:
             description: the foreign key for the raw products data.
             tests:
             - not_null
+
       - name: salesorderheader
         description: the raw sales order header data.
         columns:
@@ -33,6 +34,7 @@ sources:
             description: the foreign key for the raw customer data.
             tests:
             - not_null
+
       - name: salesorderheadersalesreason
         description: the raw sales reason versus sales order relation data.
         columns:
@@ -44,6 +46,7 @@ sources:
             description: the foreign key for the raw sales order header data.
             tests:
             - not_null
+
       - name: salesreason
         description: the raw sales reason data.
         columns:
@@ -52,6 +55,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: salesterritory
         description: the raw sales territory data.
         columns:
@@ -60,6 +64,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: salesperson
         description: the raw salesperson code data.
         columns:
@@ -68,6 +73,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: specialoffer
         description: the raw dimension for discounts data.
         columns:
@@ -76,6 +82,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: address
         description: the raw dimension for addresses data.
         columns:
@@ -88,6 +95,7 @@ sources:
             description: the foreign key for state province raw data.
             tests:
             - not_null
+
       - name: stateprovince
         description: the raw dimension for state province data.
         columns:
@@ -104,6 +112,7 @@ sources:
             description: the foreign key for territory raw data.
             tests:
             - not_null
+
       - name: countryregion
         description: the raw dimension for country region raw data.
         columns:
@@ -112,6 +121,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: employee
         description: the raw dimension for country region raw data.
         columns:

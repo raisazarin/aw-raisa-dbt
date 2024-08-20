@@ -13,6 +13,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: productcategory
         description: the raw products category data.
         columns:
@@ -21,6 +22,7 @@ sources:
             tests:
             - unique
             - not_null
+            
       - name: productsubcategory
         description: the raw products subcategory data.
         columns:

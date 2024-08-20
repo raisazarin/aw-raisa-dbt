@@ -13,6 +13,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: person
         description: the raw persons data.
         columns:
@@ -21,6 +22,7 @@ sources:
             tests:
             - unique
             - not_null
+
       - name: store
         description: the raw stores data.
         columns:
