@@ -10,7 +10,7 @@ with
         , {{ dbt_utils.generate_surrogate_key(['product_id']) }} as product_fk
         , {{ dbt_utils.generate_surrogate_key(['special_offer_id']) }} as special_offer_fk
         , {{ dbt_utils.generate_surrogate_key(['customer_id']) }} as customer_fk
-        , {{ dbt_utils.generate_surrogate_key(['address_id']) }} as distribution_fk
+        , {{ dbt_utils.generate_surrogate_key(['shipment_address_id']) }} as distribution_fk
         , {{ dbt_utils.generate_surrogate_key(['salesperson_id']) }} as sales_hierarchy_fk
         , sales_order_id
         , shipment_address_id
