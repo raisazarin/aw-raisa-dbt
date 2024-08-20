@@ -31,6 +31,7 @@ int_sales as (
         , order_date
         , due_date
         , ship_date
+        , is_first_order
 
         /* system column */
         , source_updated_at
