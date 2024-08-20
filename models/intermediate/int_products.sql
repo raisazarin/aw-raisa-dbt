@@ -1,7 +1,8 @@
-with product as (
-    select * 
-    from {{ ref('stg_product') }}
-    where finished_goods_flag is true
+with 
+    product as (
+        select * 
+        from {{ ref('stg_product') }}
+        where finished_goods_flag is true
 )
 
 , category as (
@@ -16,17 +17,17 @@ with product as (
 
 , first_join as (
     select
-        p.*
-        , s.product_category_id
-        , s.product_sub_category_name
-    from product as p
-    left join sub_category as s
-    on p.product_sub_category_id = s.product_sub_category_id
+        product.*
+        , sub_category.product_category_id
+        , sub_category.product_sub_category_name
+    from product
+    left join sub_category
+    on product.product_sub_category_id = sub_category.product_sub_category_id
 )
 
-, final as (
+, final_join as (
     select 
-        f.*
+        first_join.*
         , product_category_name
         , case 
             when product_line = 'R '
@@ -44,10 +45,10 @@ with product as (
                 then 'active'
             else 'disabled'
             end as is_active
-    from first_join as f
-    left join category as c
-    on f.product_category_id = c.product_category_id
+    from first_join
+    left join category
+    on first_join.product_category_id = category.product_category_id
 )
 
 select *
-from final
+from final_join
