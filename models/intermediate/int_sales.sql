@@ -12,6 +12,17 @@ order_header as (
 
 )
 
+/* to define if order_date is the date of the first order of that customer */
+, first_order as (
+
+    select 
+        customer_id
+        , cast(min(order_date) as timestamp) as first_order
+    from order_header
+    group by customer_id
+
+)
+
 , join_sales as (
 
     select
@@ -56,4 +67,17 @@ order_header as (
 
 )
 
-select * from join_sales
+, final as (
+    select
+        j.*
+        , case
+            when f.first_order = j.order_date
+                then 'true'
+            else 'false'
+        end as is_first_order
+    from join_sales as j
+    left join first_order as f
+    on j.customer_id = f.customer_id
+)
+
+select * from final
