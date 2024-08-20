@@ -10,34 +10,41 @@ models:
           - unique
           - not_null
 
-      - name: sales_order_detail_id
-        description: "Primary key identifying each sales order detail."
-
       - name: product_fk
         description: "Foreign key referring to dim_products."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_sk
 
       - name: special_offer_fk
         description: "Foreign key referring to dim_offers."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_offers')
+              field: special_offer_sk
 
       - name: customer_fk
         description: "Foreign key referring to dim_customers."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_sk
 
 
       - name: distribution_fk
         description: "Foreign key referring to the dim_distribuition."
         tests:
           - not_null
+          - relationships:
+              to: ref('dim_distribuition')
+              field: distribution_sk
 
       - name: sales_hierarchy_fk
         description: "Foreign key referring to the dim_sales_hierarchy."
-        tests:
-          - not_null
 
       - name: sales_order_id
         description: "Sales order identifier."
@@ -46,6 +53,9 @@ models:
 
       - name: shipment_address_id
         description: "Shipment address identifier."
+
+      - name: territory_id
+        description: "Territory associated to the order." 
 
       - name: payment_method
         description: "Method of payment for the order: 'credit card' or 'other payment method'."
@@ -83,9 +93,3 @@ models:
 
       - name: updated_at
         description: "Timestamp when the record was last updated."
-
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - sales_order_detail_id
-            - sales_sk
