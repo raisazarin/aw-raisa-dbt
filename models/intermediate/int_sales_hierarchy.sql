@@ -1,40 +1,34 @@
 with 
-
-salesperson as (
-
-    select * from {{ ref('stg_salesperson') }}
-    where territory_id is not null
-
+    salesperson as (
+        select *
+        from {{ ref('stg_salesperson') }}
 )
 
 , employee as (
-
-    select * from {{ ref('stg_employee') }}
-
+    select *
+    from {{ ref('stg_employee') }}
 )
 
 , territory as (
-
-    select * from {{ ref('stg_sales_territory')}}
-
+    select * 
+    from {{ ref('stg_sales_territory')}}
 )
 
 , join_all as (
-
     select
-        s.salesperson_id
-        , s.territory_id
-        , e.job_title
-        , t.territory_name
-        , t.country_region_id
-        , t.group_region
-        , s.updated_at as source_updated_at
-    from salesperson as s
-    left join employee as e
-    on s.salesperson_id = e.person_id
-    left join territory as t
-    on s.territory_id = t.territory_id
-
+        salesperson.salesperson_id
+        , salesperson.territory_id
+        , employee.job_title
+        , territory.territory_name
+        , territory.country_region_id
+        , territory.group_region
+        , salesperson.updated_at as source_updated_at
+    from salesperson
+    left join employee
+    on salesperson.salesperson_id = employee.person_id
+    left join territory
+    on salesperson.territory_id = territory.territory_id
 )
 
-select * from join_all
+select *
+from join_all
