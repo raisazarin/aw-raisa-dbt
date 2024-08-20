@@ -29,4 +29,4 @@ with
 )
 
 select *
- from transformed
+from transformed

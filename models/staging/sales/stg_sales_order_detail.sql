@@ -1,6 +1,7 @@
-with source as (
-    select * 
-    from {{ source('adventure_works_source', 'salesorderdetail') }}
+with 
+    source as (
+        select * 
+        from {{ source('adventure_works_source', 'salesorderdetail') }}
 )
 
 , transformed as (
