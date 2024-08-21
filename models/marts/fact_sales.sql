@@ -13,6 +13,8 @@ with
             , {{ dbt_utils.generate_surrogate_key(['shipment_address_id']) }} as distribution_fk
             , {{ dbt_utils.generate_surrogate_key(['salesperson_id', 'territory_id']) }} as sales_hierarchy_fk
             , sales_order_id
+            , salesperson_id
+            , territory_id
             , payment_method
             , order_quantity
             , unit_price
