@@ -45,17 +45,16 @@ models:
 
       - name: sales_hierarchy_fk
         description: "Foreign key referring to the dim_sales_hierarchy."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sales_hierarchy')
+              field: sales_hierarchy_sk
 
       - name: sales_order_id
         description: "Sales order identifier."
         tests:
           - not_null
-
-      - name: shipment_address_id
-        description: "Shipment address identifier."
-
-      - name: territory_id
-        description: "Territory associated to the order." 
 
       - name: payment_method
         description: "Method of payment for the order: 'credit card' or 'other payment method'."

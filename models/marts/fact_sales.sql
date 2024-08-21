@@ -11,14 +11,8 @@ with
             , {{ dbt_utils.generate_surrogate_key(['special_offer_id']) }} as special_offer_fk
             , {{ dbt_utils.generate_surrogate_key(['customer_id']) }} as customer_fk
             , {{ dbt_utils.generate_surrogate_key(['shipment_address_id']) }} as distribution_fk
-            , case 
-                when salesperson_id is not null
-                    then {{ dbt_utils.generate_surrogate_key(['salesperson_id']) }} 
-                else null
-            end as sales_hierarchy_fk
+            , {{ dbt_utils.generate_surrogate_key(['salesperson_id', 'territory_id']) }} as sales_hierarchy_fk
             , sales_order_id
-            , shipment_address_id
-            , territory_id
             , payment_method
             , order_quantity
             , unit_price

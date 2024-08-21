@@ -1,12 +1,17 @@
 with 
-    salesperson as (
-        select *
-        from {{ ref('stg_salesperson') }}
+    order_header as (
+        select distinct
+            salesperson_id
+            , territory_id
+        from {{ ref('stg_sales_order_header') }}    
     )
 
-    , employee as (
-        select *
-        from {{ ref('stg_employee') }}
+    , person as (
+        select 
+            person_id
+            , first_name
+            , last_name
+        from {{ ref('stg_person') }}
     )
 
     , territory as (
@@ -16,18 +21,17 @@ with
 
     , join_all as (
         select
-            salesperson.salesperson_id
-            , salesperson.territory_id
-            , employee.job_title
+            order_header.salesperson_id
+            , order_header.territory_id
+            , concat(person.first_name,' ',person.last_name) as salesperson_name
             , territory.territory_name
             , territory.country_region_id
             , territory.group_region
-            , salesperson.updated_at as source_updated_at
-        from salesperson
-        left join employee
-        on salesperson.salesperson_id = employee.person_id
+        from order_header
+        left join person
+        on order_header.salesperson_id = person.person_id
         left join territory
-        on salesperson.territory_id = territory.territory_id
+        on order_header.territory_id = territory.territory_id
     )
 
 select *
