@@ -40,8 +40,8 @@ with
 
     , join_date as (
         select
-            dates.*
-            , sales.*
+            sales.*
+            , dates.*
             , products.standard_cost
         from sales
         left join dates
@@ -57,7 +57,6 @@ with
             , date_day
             , year
             , month
-            , month_name_short
             , case
                 when date_day = max(date_day) over()
                     then "last day"
@@ -79,7 +78,14 @@ with
             , date_day
     )
 
+    , generate_sk as (
+        select
+            {{ dbt_utils.generate_surrogate_key(['date_day', 'sales_hierarchy_fk']) }} as sales_hierarchy_metrics_sk
+            , *
+        from aggregate
+    )
+
     select *
-    from aggregate
+    from generate_sk
 
 
