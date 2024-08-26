@@ -37,15 +37,6 @@ models:
       - name: total_orders
         description: "Count of distinct sales orders."
 
-      - name: unit_price
-        description: "Sum of unit prices."
-
-      - name: standard_cost
-        description: "Sum of standard costs for products."
-
-      - name: discount
-        description: "Sum of discount values."
-
       - name: total_units_sold
         description: "Sum of units sold."
 
@@ -54,6 +45,9 @@ models:
 
       - name: net_sales
         description: "Total net sales amount after discounts | (unit price - discount) * quantity."
+      
+      - name: gross_profit
+        description: "Total gross profit amount after discounts | (unit_price - unit_price_discount_value - standard_cost) * order_quantity)."
 
       - name: new_customers
         description: "Sum of orders made for a customer for the first time  "

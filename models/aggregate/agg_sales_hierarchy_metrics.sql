@@ -63,12 +63,10 @@ with
                 else null
             end as last_day
             , count(distinct sales_order_id) as total_orders
-            , sum(unit_price) as unit_price
-            , sum(standard_cost) as standard_cost
-            , sum(unit_price_discount_value) as discount
             , sum(order_quantity) as total_units_sold
-            , sum (unit_price * order_quantity) as gross_sales
-            , sum ((unit_price - unit_price_discount_value) * order_quantity) as net_sales
+            , sum(unit_price * order_quantity) as gross_sales
+            , sum((unit_price - unit_price_discount_value) * order_quantity) as net_sales
+            , sum((unit_price - unit_price_discount_value - standard_cost) * order_quantity) as gross_profit
             , sum(case
                     when is_first_order = 'true'
                         then 1
