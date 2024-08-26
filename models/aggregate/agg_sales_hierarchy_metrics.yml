@@ -55,4 +55,8 @@ models:
       - name: net_sales
         description: "Total net sales amount after discounts | (unit price - discount) * quantity."
 
+      - name: new_customers
+        description: "Sum of orders made for a customer for the first time  "
+        
+
     

@@ -69,6 +69,11 @@ with
             , sum(order_quantity) as total_units_sold
             , sum (unit_price * order_quantity) as gross_sales
             , sum ((unit_price - unit_price_discount_value) * order_quantity) as net_sales
+            , sum(case
+                    when is_first_order = 'true'
+                        then 1
+                    else 0
+                end) as new_customers
         from join_date
         group by 
             year
