@@ -14,8 +14,8 @@ with
             , cast(specialofferid as string) as special_offer_id
             /* other columns */
             , orderqty as order_quantity
-            , unitprice as unit_price
-            , unitpricediscount as unit_price_discount
+            , cast(unitprice as numeric) as unit_price
+            , cast(unitpricediscount as numeric) as unit_price_discount
             /* system column */
             , modifieddate  as updated_at
         from source

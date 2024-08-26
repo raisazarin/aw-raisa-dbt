@@ -12,8 +12,8 @@ with
             , cast(productsubcategoryid as string) as product_sub_category_id
             , name as product_name
             , finishedgoodsflag as finished_goods_flag
-            , standardcost as standard_cost
-            , listprice as unit_price
+            , cast(standardcost as numeric) as standard_cost
+            , cast(listprice as numeric) as unit_price
             , productline as product_line
             , sellstartdate as sell_start_date
             , sellenddate as sell_end_date

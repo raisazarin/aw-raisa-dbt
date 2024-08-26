@@ -19,10 +19,10 @@ with
             , duedate as due_date
             , shipdate as ship_date
             , status as order_status
-            , subtotal as order_sub_total
-            , taxamt as tax_amount
-            , freight as freight
-            , totaldue as total_due
+            , cast(subtotal as numeric) as order_sub_total
+            , cast(taxamt as numeric) as tax_amount
+            , cast(freight as numeric) as freight
+            , cast(totaldue as numeric) as total_due
             /* system column */
             , modifieddate  as updated_at
         from source
