@@ -48,9 +48,6 @@ models:
       
       - name: gross_profit
         description: "Total gross profit amount after discounts | (unit_price - unit_price_discount_value - standard_cost) * order_quantity)."
-
-      - name: new_customers
-        description: "Sum of orders made for a customer for the first time  "
         
 
     
