@@ -20,7 +20,7 @@ with
             , unit_price
             , unit_price_discount_percentage
             , unit_price_discount_value 
-            , order_date
+            , cast(order_date as date) as order_date
             , due_date
             , ship_date
             , is_first_order
