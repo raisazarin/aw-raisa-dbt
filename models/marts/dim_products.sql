@@ -15,6 +15,9 @@ with
             , product_sub_category_name
             , product_line
             , product_line_name
+            , product_model_id
+            , product_size
+            , product_color
             , standard_cost
             , unit_price
             , is_active

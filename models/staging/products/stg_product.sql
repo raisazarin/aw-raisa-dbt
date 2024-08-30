@@ -15,6 +15,9 @@ with
             , cast(standardcost as numeric) as standard_cost
             , cast(listprice as numeric) as unit_price
             , productline as product_line
+            , cast(productmodelid as string) as product_model_id
+            , 'size' as product_size
+            , color as product_color
             , sellstartdate as sell_start_date
             , sellenddate as sell_end_date
             /* system column */
