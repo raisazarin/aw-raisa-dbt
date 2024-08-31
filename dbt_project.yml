@@ -52,3 +52,11 @@ models:
     aggregate:
       +materialized: table
       +schema: marts
+
+seeds:
+  aw_raisa_dbt:
+    +file_format: csv
+    +quote: '"'
+    +delimiter: ','
+    +header: true
+    +schema: 'data_science' 
