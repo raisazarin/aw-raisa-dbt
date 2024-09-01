@@ -36,11 +36,11 @@ models:
 
 
       - name: distribution_fk
-        description: "Foreign key referring to the dim_distribuition."
+        description: "Foreign key referring to the dim_distribution."
         tests:
           - not_null
           - relationships:
-              to: ref('dim_distribuition')
+              to: ref('dim_distribution')
               field: distribution_sk
 
       - name: sales_hierarchy_fk
