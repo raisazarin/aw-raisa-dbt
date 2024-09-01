@@ -38,11 +38,11 @@ models:
     +file_format: delta
 
     staging:
-      +materialized: view
+      +materialized: ephemeral
       +schema: staging
 
     intermediate:
-      +materialized: view
+      +materialized: ephemeral
       +schema: intermediate
 
     marts:
