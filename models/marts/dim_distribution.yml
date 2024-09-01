@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: dim_distribution
+    description: "This model creates a dimension table for distribution centers information relating to address ids, including surrogate keys and additional columns."
+    columns:
+      - name: distribution_sk
+        description: "Surrogate key for the distribution dimension, generated from 'address_id'."
+        tests:
+          - not_null
+          - unique
+
+      - name: address_id
+        description: "Primary key for the distribution record."
+        tests:
+          - not_null
+          - unique
+
+      - name: territory_id
+        description: "Identifier for the territory."
+
+      - name: territory_name
+        description: "Name of the territory."
+
+      - name: country_region_id
+        description: "Identifier for the country or region."
+
+      - name: country_region_name
+        description: "Name of the country or region."
+
+      - name: state_province_id
+        description: "Identifier for the state or province."
+
+      - name: state_province_name
+        description: "Name of the state or province."
+
+      - name: distribuition_center
+        description: "Name or identifier of the distribution center."
+        tests:
+          - not_null
+          - dbt_utils.not_empty_string
+
+      - name: spacial_location_address
+        description: "Address latitude and longitude."
+
+      - name: postal_code
+        description: "Postal code for the address."
+
+      - name: iso_state_province_code
+        description: "ISO code for the state or province."
+
+      - name: is_state_equal_country_flag
+        description: "Flag indicating if the state is the same as the country to state_province_id."
+
+      - name: group_region
+        description: "Group or region grouping information: Europe, Pacific and North America."
+
+      - name: source_updated_at
+        description: "Timestamp when the source record was last updated."
+
+      - name: updated_at
+        description: "Timestamp when the record was last updated in this model."
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - address_id
+            - distribution_sk

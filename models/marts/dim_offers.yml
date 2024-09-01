@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: dim_offers
+    description: "This model creates a dimension table for special offers, including a surrogate key and additional columns."
+    columns:
+      - name: special_offer_sk
+        description: "Surrogate key for the special offers dimension."
+        tests:
+          - not_null
+          - unique
+
+      - name: special_offer_id
+        description: "Primary key for the special offers, sourced from raw data."
+        tests:
+          - not_null
+          - unique
+
+      - name: offer_name
+        description: "Name of the special offer."
+
+      - name: discount_percentage
+        description: "Percentage of the discount for the special offer."
+
+      - name: discount_category
+        description: "Category of the discount."
+
+      - name: offer_customer_type
+        description: "Type of customer eligible for the offer: 'reseller' or 'retail'."
+
+      - name: start_offer_date
+        description: "Start date of the special offer."
+
+      - name: end_offer_date
+        description: "End date of the special offer."
+
+      - name: source_updated_at
+        description: "Timestamp of when the source record was last updated."
+        
+      - name: updated_at
+        description: "Timestamp of when the record was last updated in this model."
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - special_offer_id
+            - special_offer_sk

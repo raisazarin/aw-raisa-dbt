@@ -1,25 +1,31 @@
-# Indicium Academy
+# Projeto Final do Programa Lighthouse - Adventure Works
 
-Repositório para ser utilizado no desafio para a obtenção da certificação de Analytics Engineer by Indicium. Faça o fork deste repositório e o utilize durante o desafio para fazer a insgestão das tabelas do SAP do Adventure Works.
+## Introdução
 
-## Instruções
+Este projeto faz parte do Desafio Final do Programa Lighthouse da empresa Indicium, entregue em setembro de 2024. O objetivo deste desafio é avaliar a competência em um projeto prático seguindo a metodologia do Modern Analytics Stack, desenvolvida pela Indicium. Este projeto envolve a construção de uma infraestrutura moderna de analytics, incluindo modelagem dimensional, transformação de dados e apresentação dos dados em dashboards e relatórios.
 
-Todas as tabelas do banco fonte do SAP da Adventure Works serão carregadas como seeds pelo dbt. Os arquivos .csv com os dados já estão na pasta de seeds.
+## Objetivo Geral
 
-Para fazer o carregamento de todas as tabelas usem o comando:
-- `dbt seed`
+O projeto foi realizado para a Adventure Works (AW), uma indústria de bicicletas fictícia. 
+A AW busca utilizar seus dados de forma estratégica para tomar decisões informadas e se tornar uma empresa orientada por dados. O foco inicial foi a área de vendas, mas foram consideradas outras áreas para fornecer uma visão completa dos dados.
 
-Para carregar uma tabela especifíca utilizem o comando
-- `dbt seed -s nome_do_csv`
+## Tecnologias Utilizadas
 
-### Problemas comuns
+- **Data Warehouse**: Google BigQuery
+- **Transformação de Dados**: dbt Cloud
+- **Dashboard e Relatórios**: Metabase Open Source
 
-Em caso a linha de comando do dbt fique com o status de estar sempre carregando, ou, o job do comando `dbt seed` fique rodando indefinitivamente mesmo após as 64 tabelas forem carregadas você precisará reiniciar o terminal. Para isso, clique nos três pontos no canto inferior direito ou no lado direito da linha de comando e escolha a opção `Restart IDE`.
+## Documentação e Links
 
+- **Diagrama Conceitual**: O diagrama conceitual da modelagem está disponível no arquivo `diagrama_conceitual.pdf` incluído neste repositório.
+- **Notebook de Solução de DS**: O notebook com a solução das questões de ciência de dados (questões 7, 8, 9 e 10) está incluído no repositório com o nome `LH_AW_DS_RAISA`.
+- **Gráfico de Linhagem**: O arquivo `lineage_graph.pdf` contém o gráfico de linhagem gerado automaticamente pelo dbt, mostrando as interdependências entre os modelos e tabelas.
+- **Documentação**: na seção de documentação do dbt Cloud é possível acessar a documentação gerada automativamente. 
 
-## Recursos:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](http://community.getbdt.com/) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Acesso ao Dashboard
+
+O dashboard foi desenvolvido utilizando o Metabase Open Source. As senhas para acesso ao dashboard no Metabase serão enviadas diretamente à equipe de correção.
+
+---
+
+Para qualquer dúvida ou esclarecimento adicional, entre em contato através do email raisa.zarine@indicium.tech . 

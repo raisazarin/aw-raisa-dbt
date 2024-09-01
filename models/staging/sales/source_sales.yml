@@ -1,0 +1,125 @@
+version: 2
+
+sources:
+  - name: adventure_works_source
+    description: a clone of Adventure Works database.
+    database: quixotic-card-431711-p4 
+    tables:
+      - name: salesorderdetail
+        description: the raw sales order detail data.
+        columns:
+          - name: salesorderdetailid
+            description: the primary key for the raw sales order detail data.
+            tests:
+            - unique
+            - not_null
+          - name: salesorderid
+            description: the foreign key for the raw sales orders data.
+            tests:
+            - not_null
+          - name: productid
+            description: the foreign key for the raw products data.
+            tests:
+            - not_null
+
+      - name: salesorderheader
+        description: the raw sales order header data.
+        columns:
+          - name: salesorderid
+            description: the primary key for the raw sales order header data.
+            tests:
+            - unique
+            - not_null
+          - name: customerid
+            description: the foreign key for the raw customer data.
+            tests:
+            - not_null
+
+      - name: salesorderheadersalesreason
+        description: the raw sales reason versus sales order relation data.
+        columns:
+          - name: salesreasonid
+            description: the foreign key for the raw sales reason data.
+            tests:
+            - not_null
+          - name: salesorderid
+            description: the foreign key for the raw sales order header data.
+            tests:
+            - not_null
+
+      - name: salesreason
+        description: the raw sales reason data.
+        columns:
+          - name: salesreasonid
+            description: the primary key for the raw sales reason data.
+            tests:
+            - unique
+            - not_null
+
+      - name: salesterritory
+        description: the raw sales territory data.
+        columns:
+          - name: territoryid
+            description: the primary key for the raw sales territory data.
+            tests:
+            - unique
+            - not_null
+
+      - name: specialoffer
+        description: the raw dimension for discounts data.
+        columns:
+          - name: specialofferid
+            description: the primary key for the raw discounts data.
+            tests:
+            - unique
+            - not_null
+
+      - name: address
+        description: the raw dimension for addresses data.
+        columns:
+          - name: addressid
+            description: the primary key for addresses raw data.
+            tests:
+            - unique
+            - not_null
+          - name: stateprovinceid
+            description: the foreign key for state province raw data.
+            tests:
+            - not_null
+
+      - name: stateprovince
+        description: the raw dimension for state province data.
+        columns:
+          - name: stateprovinceid
+            description: the primary key for state province raw data.
+            tests:
+            - unique
+            - not_null
+          - name: countryregioncode
+            description: the foreign key for country region raw data.
+            tests:
+            - not_null
+          - name: territoryid
+            description: the foreign key for territory raw data.
+            tests:
+            - not_null
+
+      - name: countryregion
+        description: the raw dimension for country region raw data.
+        columns:
+          - name: countryregioncode
+            description: the primary key for country region raw data.
+            tests:
+            - unique
+            - not_null
+
+      - name: employee
+        description: the raw dimension for country region raw data.
+        columns:
+          - name: businessentityid
+            description: the primary key for employees raw data.
+            tests:
+            - unique
+            - not_null
+          
+          

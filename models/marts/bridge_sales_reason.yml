@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: bridge_sales_reason
+    description: |
+      This model creates a bridge table between the dimension table `dim_sales_reason` and 
+      the fact table `fact_sales`. It generates surrogate keys for the combination of sales order IDs 
+      and sales reason IDs, enabling better integration and analysis of sales data.
+    columns:
+      - name: bridge_sales_reason_sk
+        description: "Surrogate key generated for the combination of sales_order_id, sales_reason_id, and sales_order_detail_id."
+        tests:
+          - not_null
+          - unique
+
+      - name: sales_reason_fk
+        description: "Foreigh key generated from the combination of sales_order_id and sales_reason_id for dim_sales_reason."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sales_reason')
+              field: sales_reason_sk
+
+      - name: sales_fk
+        description: "Foreigh key generated from sales_order_detail_id do fact_sales."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fact_sales')
+              field: sales_sk
+

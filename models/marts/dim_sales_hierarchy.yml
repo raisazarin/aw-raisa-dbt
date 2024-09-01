@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_sales_hierarchy
+    description: "This model generates surrogate keys for the sales hierarchy and includes information about salespersons and territories."
+    columns:
+      - name: sales_hierarchy_sk
+        description: "Surrogate key for the sales hierarchy, generated based on salesperson_id and territory_id."
+        tests:
+          - unique
+          - not_null
+
+      - name: salesperson_id
+        description: "Identifier for the salesperson."
+
+      - name: territory_id
+        description: "Identifier for the sales territory."
+        tests:
+          - not_null
+
+      - name: salesperson_name
+        description: "Name of the salesperson."
+
+      - name: territory_name
+        description: "Name of the sales territory."
+
+      - name: country_region_id
+        description: "Identifier for the country or region."
+
+      - name: group_region
+        description: "Group or classification of the region."
+
+      - name: updated_at
+        description: "Timestamp when the record was last updated in the model."
+
+
+

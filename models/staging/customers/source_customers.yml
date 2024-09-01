@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: adventure_works_source
+    description: a clone of Adventure Works database.
+    database: quixotic-card-431711-p4 
+    tables:
+      - name: customer
+        description: the raw customers data.
+        columns:
+          - name: customerid
+            description: the primary key for the raw products data.
+            tests:
+            - unique
+            - not_null
+
+      - name: person
+        description: the raw persons data.
+        columns:
+          - name: businessentityid
+            description: the primary key for the raw persons data.
+            tests:
+            - unique
+            - not_null
+
+      - name: store
+        description: the raw stores data.
+        columns:
+          - name: businessentityid
+            description: the primary key for the raw stores data.
+            tests:
+            - unique
+            - not_null
+          - name: salespersonid
+            description: the foreign key for the raw salesperson data.
+            tests:
+            - not_null
