@@ -28,4 +28,4 @@ O dashboard foi desenvolvido utilizando o Metabase Open Source. As senhas para a
 
 ---
 
-Para qualquer dúvida ou esclarecimento adicional, entre em contato através do email raisa.zarine@indicium.tech . 
+Para qualquer dúvida ou esclarecimento adicional, entre em contato através do email raisa.zarin@indicium.tech . 
